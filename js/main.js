@@ -184,7 +184,7 @@ function IngresoOpciones(){
     }
 
     
-    opcion =prompt("Bienvenido al supermercado:\n1-Para ingresar productos\n2-Para Mostrar productos\n3- Para eliminar ultimo producto\n4-Eliminar primer producto\n5-Para guardar productos en la memoria\n6-Para eliminar un producto\n7 Borrar memoria (localStorage)\n0-Para salir del supermercado");
+    prompt("Bienvenido al supermercado:\n1-Para ingresar productos\n2-Para Mostrar productos\n3- Para eliminar ultimo producto\n4-Eliminar primer producto\n5-Para guardar productos en la memoria\n6-Para eliminar un producto\n7 Borrar memoria (localStorage)\n0-Para salir del supermercado");
     
 }
  
