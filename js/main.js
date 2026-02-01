@@ -122,6 +122,23 @@ function eliminarProducto(){
 }
 
 
+function eliminarMemoria () {
+    const data = localStorage.getItem("productos"); //leo lo qyue hayu guardado en localstorage con su clave "productos"
+
+    if (!data) {
+        alert("📭 No hay nada guardado en la memoria (localStorage).");
+        return;
+    }
+    localStorage.removeItem("catalogo");   // vieja
+    localStorage.removeItem("productos");  // actual
+    
+
+    productos.length = 0;
+
+    alert("🧹 Memoria borrada: se eliminó 'productos' del localStorage y se vació el carrito.");
+
+}
+
 function finalizarCompra() {
     let total = 0;
 
@@ -133,9 +150,9 @@ function finalizarCompra() {
 let productos = [] ;
 
 function IngresoOpciones(){
-    let opcion =prompt("Bienvenido al supermercado: \n1-Para ingresar productos\n2-Para Mostrar productos\n3- Para eliminar ultimo producto\n4-Eliminar primer producto\n5-Para guardar productos en la memoria\n6-Para eliminar un producto\n7-Para salir y finalizar compra.\n");
+    let opcion =prompt("Bienvenido al supermercado:\n1-Para ingresar productos\n2-Para Mostrar productos\n3- Para eliminar ultimo producto\n4-Eliminar primer producto\n5-Para guardar productos en la memoria\n6-Para eliminar un producto\n7 Borrar memoria (localStorage)\n0-Para salir del supermercado");
 
-    while (opcion !=="7") {
+    while (opcion !=="0") {
 
     
     switch(opcion) {
@@ -152,18 +169,22 @@ function IngresoOpciones(){
         eliminarPrimero();
         break;
     case "5":
-        localStorage.setItem('productos', JSON.stringify(productos));   //si el usuario quiere guardar apreta 5 y guardar
+        localStorage.setItem('productos', JSON.stringify(productos));   //si el usuario quiere guardar apreta 5 y guardar convierto el objeto econ json 
         alert("💾 Catálogo guardado");
         break;
     case "6":
         eliminarProducto();
         break;
+    case "7" :
+         eliminarMemoria();  
+         break; 
     default:
         alert("Opción inválida");
 
     }
+
     
-    opcion =prompt("Bienvenido al supermercado falopin: \n 1-Para ingresar productos\n 2-Para Mostrar productos\n3- Para eliminar ultimo producto\n4-Eliminar primer producto\n5-Para guardar productos en la memoria\n6-Para eliminar\n7-Para salir y finalizar compra.\n");
+    opcion =prompt("Bienvenido al supermercado:\n1-Para ingresar productos\n2-Para Mostrar productos\n3- Para eliminar ultimo producto\n4-Eliminar primer producto\n5-Para guardar productos en la memoria\n6-Para eliminar un producto\n7 Borrar memoria (localStorage)\n0-Para salir del supermercado");
     
 }
  
@@ -173,3 +194,4 @@ function IngresoOpciones(){
 //llamo al inicio dle programa si hay memoria muestra cargado sino hay no hace nada y entra al switch 
 memoriaCatalogo();
 IngresoOpciones();
+Object.keys(localStorage);
